@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace AspNetWebFormLocalization
 {
-    public partial class _Default : Page
+    public partial class _Default : AppWebForm
     {
         protected void Page_Load(object sender, EventArgs e)
         {

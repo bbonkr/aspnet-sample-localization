@@ -77,7 +77,7 @@
             </footer>
         </div>
 
-          
+
          <input type="hidden" id="languageHiddenField" name="lang" />
     </form>
 

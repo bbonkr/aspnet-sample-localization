@@ -10,6 +10,8 @@ namespace AspNetWebFormLocalization
 {
     public class AppWebForm : Page
     {
+        private const string PROFILE_CULTURE = "culture";
+
         protected override void InitializeCulture()
         {
             string culture = String.Empty;
@@ -26,7 +28,14 @@ namespace AspNetWebFormLocalization
 
         private string GetCurrentCulture()
         {
-            return Thread.CurrentThread.CurrentCulture.Name;
+            var culture = GetCultureCookie();
+
+            if (String.IsNullOrWhiteSpace(culture))
+            {
+                culture = Thread.CurrentThread.CurrentCulture.Name;
+            }
+
+            return culture;
         }
 
         private void UpdateCulture(string culture)
@@ -39,6 +48,42 @@ namespace AspNetWebFormLocalization
             Thread.CurrentThread.CurrentCulture = curtureInfo;
             Thread.CurrentThread.CurrentUICulture = curtureInfo;
 
+            SetCultureCookie(culture);
+        }
+
+        private void SetCultureCookie(string culture)
+        {
+            var key = Request.Cookies.AllKeys.Where(k => k.ToLower().Equals(PROFILE_CULTURE)).FirstOrDefault();
+            HttpCookie cookie = null;
+
+            if (String.IsNullOrEmpty(key))
+            {
+                cookie = new HttpCookie(PROFILE_CULTURE);
+            }
+            else
+            {
+                cookie = Request.Cookies[key];
+            }
+
+            if (cookie.Values.Count == 0 || !cookie.Values["name"].Equals(culture.ToLower()))
+            {
+                cookie.Values["name"] = culture.ToLower();
+                Response.Cookies.Remove(key);
+                Response.Cookies.Add(cookie);
+            }
+        }
+
+        private string GetCultureCookie()
+        {
+            var culture = String.Empty;
+            var key = Request.Cookies.AllKeys.Where(k => k.ToLower().Equals(PROFILE_CULTURE)).FirstOrDefault();
+
+            if (!String.IsNullOrEmpty(key))
+            {
+                culture = Request.Cookies[key]["name"];
+            }
+
+            return culture;
         }
     }
 }
