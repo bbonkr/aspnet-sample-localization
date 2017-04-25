@@ -127,6 +127,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AnotherSample.aspx" />
+    <Content Include="App_LocalResources\AnotherSample.aspx.en-us.resx">
+      <LastGenOutput>AnotherSample.aspx.Designer.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="App_LocalResources\AnotherSample.aspx.resx">
+      <LastGenOutput>AnotherSample.aspx.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -178,6 +185,16 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnotherSample.aspx.cs">
+      <DependentUpon>AnotherSample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnotherSample.aspx.designer.cs">
+      <DependentUpon>AnotherSample.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppWebForm.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>

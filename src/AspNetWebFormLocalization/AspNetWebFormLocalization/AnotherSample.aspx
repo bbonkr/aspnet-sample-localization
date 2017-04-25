@@ -1,8 +1,6 @@
-﻿<%@ Page Language="C#" Title="지역화 샘플" meta:resourcekey="Sample" UICulture="Auto" AutoEventWireup="true" CodeBehind="Sample.aspx.cs" Inherits="AspNetWebFormLocalization.Sample" MasterPageFile="~/Site.Master" %>
-
-<asp:Content runat="server" ContentPlaceHolderID="MainContent">
-
-    <div class="page-header">
+﻿<%@ Page Title="다른 페이지" meta:resourcekey="anotherSample" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AnotherSample.aspx.cs" Inherits="AspNetWebFormLocalization.AnotherSample" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+        <div class="page-header">
         <h1><%: Title %></h1>
     </div>
 
@@ -29,16 +27,4 @@
             <asp:Button runat="server" ID="saveButton" meta:resourcekey="saveButton" Text="저장" CssClass="btn btn-primary" />
         </div>
     </div>
-
-
-<%--    <input type="hidden" id="languageHiddenField" name="lang" />
-    <script>
-        $(document).ready(function () {
-            $('#<%= setLanguageButton.ClientID %>').on('click', function (e) {
-                var lang = $('#<%= languageDropDownList.ClientID%>').val();
-                $('#languageHiddenField').val(lang);
-                $('form').submit();
-            });
-        });
-    </script>--%>
 </asp:Content>

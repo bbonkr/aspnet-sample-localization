@@ -10,33 +10,51 @@
 namespace AspNetWebFormLocalization {
     
     
-    public partial class SiteMaster {
+    public partial class AnotherSample {
         
         /// <summary>
-        /// MainContent control.
+        /// languageDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.DropDownList languageDropDownList;
         
         /// <summary>
-        /// languagesDropdownList control.
+        /// setLanguageButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList languagesDropdownList;
+        protected global::System.Web.UI.WebControls.Button setLanguageButton;
         
         /// <summary>
-        /// applyLanguageButton control.
+        /// lastNameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button applyLanguageButton;
+        protected global::System.Web.UI.WebControls.TextBox lastNameTextBox;
+        
+        /// <summary>
+        /// firstNameTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox firstNameTextBox;
+        
+        /// <summary>
+        /// saveButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button saveButton;
     }
 }

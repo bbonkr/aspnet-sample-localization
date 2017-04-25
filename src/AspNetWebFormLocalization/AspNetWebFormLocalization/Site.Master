@@ -53,6 +53,8 @@
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
+                        <li><a runat="server" href="~/Sample">Sample</a></li>
+                        <li><a runat="server" href="~/AnotherSample">Other sample</a></li>
                     </ul>
                 </div>
             </div>
@@ -61,11 +63,32 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+            <footer class="row">
+                <div class="col col-xs-8">
+                    &copy; <%: DateTime.Now.Year %> - My ASP.NET Application
+                </div>
+                <div class="col col-xs-4 text-right">
+                    <div class="form-inline form-group">
+                        <label class="sr-only">언어설정</label>
+                        <asp:DropDownList runat="server" ID="languagesDropdownList" CssClass="form-control" />
+                        <asp:Button runat="server" ID="applyLanguageButton" Text="선택" CssClass="btn btn-default" />
+                    </div>
+                </div>
             </footer>
         </div>
 
+          
+         <input type="hidden" id="languageHiddenField" name="lang" />
     </form>
+
+    <script>
+        $(document).ready(function () {
+            $('#<%= applyLanguageButton.ClientID %>').on('click', function (e) {
+                 var lang = $('#<%= languagesDropdownList.ClientID%>').val();
+                 $('#languageHiddenField').val(lang);
+                 $('form').submit();
+             });
+         });
+    </script>
 </body>
 </html>
