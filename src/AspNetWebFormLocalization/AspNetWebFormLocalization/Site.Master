@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="AspNetWebFormLocalization.SiteMaster" %>
-
+<%@ Import Namespace="AspNetWebFormLocalization" %>
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
@@ -78,7 +78,7 @@
         </div>
 
 
-         <input type="hidden" id="languageHiddenField" name="lang" />
+         <input type="hidden" id="languageHiddenField" name="<%= AppWebForm.FORM_DATA_LANGUAGE %>" />
     </form>
 
     <script>

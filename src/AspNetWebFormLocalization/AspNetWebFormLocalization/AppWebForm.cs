@@ -10,12 +10,14 @@ namespace AspNetWebFormLocalization
 {
     public class AppWebForm : Page
     {
-        private const string PROFILE_CULTURE = "culture";
+        public const string COOKIE_CULTURE = "culture";
+        public const string COOKIE_CULTURE_NAME = "name";
+        public const string FORM_DATA_LANGUAGE = "lang";
 
         protected override void InitializeCulture()
         {
             string culture = String.Empty;
-            culture = Request["lang"];
+            culture = Request[FORM_DATA_LANGUAGE];
             if (String.IsNullOrWhiteSpace(culture))
             {
                 culture = GetCurrentCulture();
@@ -53,21 +55,21 @@ namespace AspNetWebFormLocalization
 
         private void SetCultureCookie(string culture)
         {
-            var key = Request.Cookies.AllKeys.Where(k => k.ToLower().Equals(PROFILE_CULTURE)).FirstOrDefault();
+            var key = Request.Cookies.AllKeys.Where(k => k.ToLower().Equals(COOKIE_CULTURE)).FirstOrDefault();
             HttpCookie cookie = null;
 
             if (String.IsNullOrEmpty(key))
             {
-                cookie = new HttpCookie(PROFILE_CULTURE);
+                cookie = new HttpCookie(COOKIE_CULTURE);
             }
             else
             {
                 cookie = Request.Cookies[key];
             }
 
-            if (cookie.Values.Count == 0 || !cookie.Values["name"].Equals(culture.ToLower()))
+            if (cookie.Values.Count == 0 || !cookie.Values[COOKIE_CULTURE_NAME].Equals(culture.ToLower()))
             {
-                cookie.Values["name"] = culture.ToLower();
+                cookie.Values[COOKIE_CULTURE_NAME] = culture.ToLower();
                 Response.Cookies.Remove(key);
                 Response.Cookies.Add(cookie);
             }
@@ -76,11 +78,11 @@ namespace AspNetWebFormLocalization
         private string GetCultureCookie()
         {
             var culture = String.Empty;
-            var key = Request.Cookies.AllKeys.Where(k => k.ToLower().Equals(PROFILE_CULTURE)).FirstOrDefault();
+            var key = Request.Cookies.AllKeys.Where(k => k.ToLower().Equals(COOKIE_CULTURE)).FirstOrDefault();
 
             if (!String.IsNullOrEmpty(key))
             {
-                culture = Request.Cookies[key]["name"];
+                culture = Request.Cookies[key][COOKIE_CULTURE_NAME];
             }
 
             return culture;
